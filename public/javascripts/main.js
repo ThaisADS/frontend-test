@@ -1,17 +1,15 @@
-
 obterParticipantesFazenda((erro, participantes) => {
 
     if (erro) {
         console.log(erro);
         return;
     }
-    //console.log(participantes.data.sort(participantes.data[0].name));
+    
     var participantesOrdenados = ordenarParticipantes(participantes.data);
-    //var porcentPositive = montarPorcentagem(participantes);
     var porcentNegative = "";
     
     for (var i in participantes.data) {
-        //console.log(participantes.data[i];
+        
         var total = parseInt(participantesOrdenados[i].positive) + parseInt(participantesOrdenados[i].negative);
         
         porcentPositive = montarPorcentagem(participantesOrdenados[i].positive, total);
@@ -37,7 +35,6 @@ function obterParticipantesFazenda(cb) {
             if (xhr.status == 200) {
 
                 cb(null, JSON.parse(xhr.responseText));
-                //cb(null, xhr.responseText);
 
             } else {
                 console.log(xhr.responseText);
@@ -77,10 +74,6 @@ function montarView(participante, i, porcentPositive, porcentNegative) {
         </div>
     </div>`;
 
-    //div.innerHTML += conteudo;
-
-    //participante.name + "<br>";
-
 }
 
     function ordenarParticipantes(participantes){
@@ -109,5 +102,3 @@ function montarView(participante, i, porcentPositive, porcentNegative) {
         resultado = Math.round(resultado);
         return resultado.toString() + "%";
     }
-
-
